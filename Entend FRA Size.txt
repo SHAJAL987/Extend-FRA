@@ -1,0 +1,23 @@
+		E X T E N D    F R A
+-----------------------------------------------------------------
+	STEP-1: See your FRA Space
+	-------
+		SQL> show parameter reco;
+		
+		NAME				     TYPE	 VALUE
+		------------------------------------ ----------- ------------------------------
+		control_file_record_keep_time	     integer	 7
+		db_recovery_file_dest		     string	 /u01/app/oracle/fast_recovery_
+						 area/orcl
+		db_recovery_file_dest_size	     big integer 8016M
+		db_unrecoverable_scn_tracking	     boolean	 TRUE
+		recovery_parallelism		     integer	 0
+		remote_recovery_file_dest	     string
+		
+	STEP-2: Extend FRA
+	------- 
+	        SQL> alter system set db_recovery_file_dest_size=20480M scope=spfile;
+
+	STEP-3: Now start database
+	-------
+		SQL> statup force;
